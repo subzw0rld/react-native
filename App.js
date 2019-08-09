@@ -1,12 +1,31 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+import { TabNavigator } from 'react-navigation';
+import AuthScreen from './screens/AuthScreen';
+import DeckScreen from './screens/DeckScreen';
+import MapScreen from './screens/MapScreen';
+import WelcomeScreen from './screens/WelcomeScreen';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
-  );
+class App extends React.Component {
+
+  render() {
+    const MainNavigator = TabNavigator({
+      welcome: { screen: WelcomeScreen },
+      auth: { screen: AuthScreen },
+      main: {
+        screen: TabNavigator({
+          map: { screen: MapScreen },
+          deck: { screen: DeckScreen }
+        })
+      }
+    });
+
+    return (
+      <View style={styles.container}>
+        <MainNavigator />
+      </View>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
@@ -17,3 +36,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+export default App;
