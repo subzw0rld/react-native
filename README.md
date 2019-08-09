@@ -1,2 +1,2 @@
-# react-native
-A collection of my work using react native
+# Swipe
+An example of Tinder like swipe feature in React-Native
