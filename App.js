@@ -1,9 +1,11 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import { TabNavigator } from 'react-navigation';
+import { StackNavigator, TabNavigator } from 'react-navigation';
 import AuthScreen from './screens/AuthScreen';
 import DeckScreen from './screens/DeckScreen';
 import MapScreen from './screens/MapScreen';
+import ReviewScreen from './screens/ReviewScreen';
+import SettingsScreen from './screens/SettingsScreen';
 import WelcomeScreen from './screens/WelcomeScreen';
 
 class App extends React.Component {
@@ -15,7 +17,13 @@ class App extends React.Component {
       main: {
         screen: TabNavigator({
           map: { screen: MapScreen },
-          deck: { screen: DeckScreen }
+          deck: { screen: DeckScreen },
+          review: {
+            screen: StackNavigator({
+              review: { screen: ReviewScreen },
+              settings: { screen: SettingsScreen }
+            })
+          }
         })
       }
     });
